@@ -56,6 +56,7 @@ NSW 1560</p>
 }
 const Main = styled.section`
   margin-block:50px;
+  padding-top:100px;
 
   .map__content{
     max-width:600px;

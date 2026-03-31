@@ -59,7 +59,7 @@ const Cart = () => {
   )
 }
 const Main = styled.section`
-padding-block:50px;
+padding-block:150px;
 
 
 

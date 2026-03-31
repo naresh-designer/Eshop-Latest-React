@@ -3,6 +3,7 @@ import { navData } from './navData'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 import { AppContext } from '../../Context/Context'
+import { FaCartShopping } from "react-icons/fa6"
 
 const Nav = () => {
     const [navShow, setNavShow ] = useState(false)
@@ -25,7 +26,12 @@ const Nav = () => {
           <li>
           <div className="cart">
           
-          <NavLink to='/cart'><div className={cart.length > 0 ? 'cart__addProduct' : 'cart__none'}>Cart Items : {cart.length}</div></NavLink>
+          <NavLink to='/cart'><div className={cart.length > 0 ? 'cart__addProduct' : 'cart__none'}><FaCartShopping />
+            <div className='icon'>
+            {cart.length}
+              </div>
+              </div>
+              </NavLink>
           </div></li>
 
         </ul>
@@ -169,13 +175,26 @@ ul{
     }
 
     .cart__addProduct{
-      background-color:${({theme}) => theme.common.orangeColor };
-      color:${({theme}) => theme.common.whiteColor };
       display:grid;
       align-items:center;
       text-align:center;
-      font-size:15px;
-      padding:10px 20px 8px;
+      position:relative;
+      margin-right:20px;
+      width:40px;
+
+      .icon{
+        position:absolute;
+        top:-20px;
+        right:0px;
+        border-radius:50px;
+        width:30px;
+        height:30px;
+        background-color:${({theme}) => theme.common.greenBg };
+        display:grid;
+        place-items:center;
+        font-size:16px;
+        color:${({theme}) => theme.common.whiteColor };
+      }
     }
   }
 

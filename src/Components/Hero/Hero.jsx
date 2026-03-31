@@ -21,7 +21,11 @@ const Hero = ({heroData}) => {
 const Main = styled.section`
 
 background-color:#f8f6f3;
-padding-block:50px;
+width:100%;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
 
 .hero__container{
     display:grid;

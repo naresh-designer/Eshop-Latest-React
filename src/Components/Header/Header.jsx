@@ -16,6 +16,10 @@ const Header = () => {
 }
 
 const Main = styled.header`
+position:fixed;
+z-index:1;
+top:0;
+width:100%;
 background-color:#f8f6f3;
     .header{
       display:flex;

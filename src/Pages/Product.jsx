@@ -60,6 +60,7 @@ const Product = () => {
   )
 }
 const Main = styled.section`
+padding:100px 0 0;
   margin-block-start:50px;
   .search{
     width:50%;
