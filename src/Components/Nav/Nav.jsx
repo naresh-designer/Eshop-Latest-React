@@ -8,6 +8,7 @@ import { FaCartShopping } from "react-icons/fa6"
 const Nav = () => {
     const [navShow, setNavShow ] = useState(false)
     const{cart}=useContext(AppContext)
+
   return (
     <Main>
         <div className={`nav ${navShow ? 'show' : ''}`}>
@@ -23,7 +24,11 @@ const Nav = () => {
               )
             } )
           }
-          <li>
+
+        </ul>
+
+
+        
           <div className="cart">
           
           <NavLink to='/cart'><div className={cart.length > 0 ? 'cart__addProduct' : 'cart__none'}><FaCartShopping />
@@ -32,9 +37,7 @@ const Nav = () => {
               </div>
               </div>
               </NavLink>
-          </div></li>
-
-        </ul>
+          </div>
 
         <div className={`toggle_button ${navShow ? 'changeToggle' : ''} `} onClick={() => setNavShow(!navShow)}>
           <div className="line"></div>
@@ -42,6 +45,7 @@ const Nav = () => {
           <div className="line"></div>
         </div>
       </div>
+    
     </Main>
   )
 }
@@ -49,6 +53,14 @@ const Nav = () => {
 const Main = styled.nav`
 
 font-family:${({theme}) => theme.common.merriweatherFont };
+.nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-block:30px;
+    position:relative;
+    z-index:1;
+  }
 ul{
   display:flex;
   gap:30px;
@@ -164,14 +176,32 @@ ul{
       }
     }
   }
+
+
+
+  .cart{
+    margin-right:50px;
+  }
 }
 
 .cart{
     position:relative;
     font-size:20px;
+    margin-left:20px;
+    transition:all .5s;
+    animation:fade .5s ease;
+    
+    @keyframes fade {
+        0%{
+            opacity:0;
+        }
+        100%{
+            opacity:1;
+        }
+    }
 
-    .active{
-      letter-spacing:0;
+    a{
+    color:${({theme}) => theme.common.grayColor };
     }
 
     .cart__addProduct{
@@ -206,6 +236,9 @@ ul{
   ul{
     width:100%;
   }
-}`
+}
+  
+
+`
 
 export default Nav

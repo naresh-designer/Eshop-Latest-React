@@ -16,7 +16,7 @@ const Details = () => {
   )
 }
 const Main = styled.section`
-  margin-block:50px;
+  margin-block:100px;
 `
 
 export default Details

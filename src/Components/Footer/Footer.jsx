@@ -60,8 +60,17 @@ const Main = styled.footer`
         }
     }
 
-    @media(width <= 450px){
+    @media(width <= 550px){
+    .footer{
+        flex-direction:column;
+        flex-wrap:wrap;
+    }
+
+    nav{
+       display:none;
+    }
     .copyright{
+        flex-direction:column;
         flex-wrap:wrap;
 
         p{

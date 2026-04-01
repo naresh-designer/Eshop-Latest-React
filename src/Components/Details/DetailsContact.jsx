@@ -7,6 +7,8 @@ import { FaShieldVirus } from 'react-icons/fa'
 import Star from '../Star/Star'
 import Breadcrumb from '../Breadcrumb/Breadcrumb'
 import MyImage from '../MyImage/MyImage'
+import AddCard from '../AddCard/AddCard'
+import RelatedProduct from '../RelatedProduct/RelatedProduct'
 
 
 const DetailsContact = ({products}) => {
@@ -20,7 +22,7 @@ const DetailsContact = ({products}) => {
                         
                         <div className="main__wrapper">
 
-        <Breadcrumb curElm={curElm}/>
+                            <Breadcrumb curElm={curElm}/>
                               <div className="product_detail__Page grid grid__two">
                                   <div className="product_image">
                                     <MyImage key={curElm.id} imgs={curElm.images}/>
@@ -56,8 +58,10 @@ const DetailsContact = ({products}) => {
                                               Brand : <span>{curElm.description}</span>
                                           </p>
                                       </div>
+                                      <AddCard curElm={curElm}/>
                                   </div>
                               </div>
+                              <RelatedProduct curElm={curElm}/>
                           </div>
                     )
                 }
@@ -106,10 +110,24 @@ const Main = styled.section`
     color:${({theme}) => theme.common.greenBg };
 }
 
+.related__product{
+    border-top:1px solid #ccc;
+    margin-block:50px;
+    padding-top:50px;
+
+    img{
+        border:5px solid #f1f1f1;
+        padding:10px;
+        margin-block-start:50px;
+    }
+}
+
 @media(width <= 500px){
     .grid__two{
         grid-template-columns:repeat(1, 1fr);
     }
-}`
+}
+    
+`
 
 export default DetailsContact

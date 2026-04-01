@@ -1,19 +1,30 @@
 
 
 import styled from 'styled-components'
-import { useContext } from 'react'
-import { AppContext } from '../../Context/Context'
-import Button from '../../assets/Styled/ButtonStyle'
 import { Link } from 'react-router-dom'
+import AddCard from '../AddCard/AddCard'
+import Button from '../../assets/Styled/ButtonStyle'
+import { MdOutlineFavorite } from "react-icons/md";
 
 const Card = ({curElm}) => {
-    const {dispatch} = useContext(AppContext)
   return (
     <Main>
         <div className='productCard' >
             <figure className='productCard__img'>
                 <img src={curElm.thumbnail} alt={curElm.title} />
                 <figcaption className='productCard__cation' ><h3>{curElm.category}<p>{curElm.brand}</p></h3></figcaption>
+                <div className="productCard__img__gallery">
+                {
+                    curElm.images.map((curElm)=>{
+                        return(
+                            <img src={curElm} alt="" />
+                        )
+                    })
+                }
+                </div>
+                <div className="favourit">
+                    <Link><MdOutlineFavorite /></Link>
+                    </div>
             </figure>
             <div className='productCard__content' >
                 <div className='productCard_category' >
@@ -21,7 +32,8 @@ const Card = ({curElm}) => {
                 </div>
             </div>
             <div className="button__group">
-            <Button onClick={()=>dispatch({type:'ADD_CART', curProduct:curElm})}>Add Cart</Button>
+                <AddCard curElm={curElm}/>
+            
             <Link to={`/details/${curElm.id}`}><Button>Details</Button></Link>
             </div>
         </div>
@@ -67,21 +79,23 @@ margin-top:30px;
         filter: grayscale(0);
     }
 
-    &:before{
-        content:'';
-        position:absolute;
-        top:0;
-        left:-100%;
-        background-color:rgba(0,0,0,.4);
-        height:100%;
-        width:100%;
-        transition:all .8s;
+    // &:before{
+    //     content:'';
+    //     position:absolute;
+    //     top:0;
+    //     left:-100%;
+    //     background-color:rgba(0,0,0,.4);
+    //     height:100%;
+    //     width:100%;
+    //     transition:all .8s;
         
-    }
+    // }
 
-    &:hover:before{
-        left:100%;
-    }
+    // &:hover:before{
+    //     left:0;
+    // }
+
+    
 
     .productCard__cation{
         position:absolute;
@@ -107,6 +121,52 @@ margin-top:30px;
             letter-spacing:1px;
         }
     }
+}
+
+.favourit{
+    position:absolute;
+    bottom:0;
+    right:-100%;
+    font-size:30px;
+    transition:all .5s;
+
+    a{
+        color:${({theme}) => theme.common.orangeColor };
+        transition:all .5s;
+
+        &:hover{
+            color:${({theme}) => theme.common.grayColor };
+        }
+    }
+} 
+
+&:hover .favourit{
+    right:20px;
+}
+
+
+
+.productCard__img__gallery{
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100px;
+    height:100%;
+    background-color:rgba(0,0,0,.7);
+    opacity:0;
+    transition:all .5s ease;
+
+    img{
+        width:80px;
+        aspect-ratio:8/8;
+        margin-block:10px;
+    }
+}
+
+
+&:hover .productCard__img__gallery{
+    opacity:1;
+    left:0;
 }
 
 .button__group{

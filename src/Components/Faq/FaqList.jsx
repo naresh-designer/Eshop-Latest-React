@@ -61,6 +61,7 @@ const Main =styled.section`
                 padding:20px 30px;
                 margin-top:20px;
                 cursor:pointer;
+                transition:all .5s ease-in-out;
 
                 .faq__header{
                     display:flex;
@@ -90,6 +91,11 @@ const Main =styled.section`
             .select{
                 background-color:black;
                 color:#fff;
+                transition:all .5s ease-in-out;
+
+                svg{
+                    transform:rotate(180deg);
+                }
             }
         }
     }
