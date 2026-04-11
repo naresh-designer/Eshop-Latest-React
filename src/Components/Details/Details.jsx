@@ -3,6 +3,7 @@ import { AppContext } from '../../Context/Context'
 import styled from 'styled-components'
 import DetailsContact from './DetailsContact'
 import Counter from '../Counter/Counter'
+import CustomerReview from '../CustomerReview/CustomerReview'
 
 const Details = () => {
   const{products}=useContext(AppContext)
@@ -12,6 +13,7 @@ const Details = () => {
           <DetailsContact products={products}/>
       </div>
       <Counter/>
+      <CustomerReview/>
     </Main>
   )
 }

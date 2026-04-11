@@ -3,6 +3,7 @@ import Heading from '../Components/Heading/Heading'
 import styled from 'styled-components'
 import Counter from '../Components/Counter/Counter'
 import Faq from '../Components/Faq/Faq'
+import CustomerReview from '../Components/CustomerReview/CustomerReview'
 
 const Contact = () => {
 
@@ -50,6 +51,7 @@ const Contact = () => {
         </figure>
       </div>
       <Counter/>
+      <CustomerReview/>
       <Faq/>
     </Main>
   )

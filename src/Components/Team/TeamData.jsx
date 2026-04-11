@@ -5,9 +5,9 @@ const TeamData = ({teamData}) => {
   return (
     <Main>
 
-        <div className='team grid grid__three ' >
+        <div className='team grid grid__four ' >
             {
-                teamData.slice(0,3).map((curElm)=>{
+                teamData.slice(0,8).map((curElm)=>{
                     return(
                         <div className="team__container" >
                             <div className="team__image">
@@ -42,6 +42,13 @@ const Main = styled.section`
     justify-content:space-between;
     border-bottom:2px solid black;
     margin-bottom:20px;
+}
+
+.team__image img{
+    width:100px;
+    height:100px;
+    border-radius:100px;
+    margin-inline:auto;
 }
 `
 

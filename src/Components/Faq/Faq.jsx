@@ -19,7 +19,7 @@ const Faq = () => {
 const Main = styled.section` 
 
 .faq__card{
-  padding:100px 0;
+  padding:50px 0;
 }
 
     

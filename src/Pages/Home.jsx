@@ -7,6 +7,7 @@ import WomanProduct from '../Components/WomanProduct/WomanProduct'
 import Deals from '../Components/Deals/Deals'
 import Counter from '../Components/Counter/Counter'
 import HomeFlower from '../Components/HomeFlower/HomeFlower'
+import CustomerReview from '../Components/CustomerReview/CustomerReview'
 
 const Home = () => {
 
@@ -26,6 +27,7 @@ const Home = () => {
     <Deals/>
     <WomanProduct/>
     <Counter/>
+    <CustomerReview/>
     <Faq/>
     </>
   )

@@ -11,7 +11,7 @@ const CardFlower = ({curElm}) => {
             {
                 curElm.slice(0,5).map((curElm)=>{
                     return(
-                        <section>
+                        <section key={curElm.id}>
                             <Link to={`/details/${curElm.id}`}>
                                 <figure>
                                     <img src={curElm.thumbnail} alt="" />

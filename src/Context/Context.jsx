@@ -38,7 +38,6 @@ const AppProvider = ({children})=>{
                 )
             })
 
-            console.log(filterFlower);
 
             setFlowerProduct(filterFlower)
 

@@ -31,7 +31,7 @@ const HomeProduct = () => {
   )
 }
 const Main = styled.section`
-    margin-block:100px;
+    margin-block:50px;
     
    
   }
