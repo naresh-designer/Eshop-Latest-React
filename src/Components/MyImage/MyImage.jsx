@@ -13,7 +13,7 @@ import 'swiper/css/navigation';
 import { Pagination, Keyboard } from 'swiper/modules'
 
 const MyImage = ({imgs}) => {
-    const[image,setImage]=useState(imgs[0])
+    const[image,setImage]=useState()
   return (
     <Main>
       <Swiper

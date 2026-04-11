@@ -1,14 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 import Button from '../../assets/Styled/ButtonStyle'
 import { Link } from 'react-router-dom'
+import { AppContext } from '../../Context/Context'
 
 const CartTotal = () => {
+  const {dispatch} = useContext(AppContext)
   return (
     <Main>
         <div className="button__cart">
         <Link to='/product'><Button>Continue Shopping</Button></Link>
-        <Link><Button>Clear Cart</Button></Link>
+        <Link><Button onClick={()=>dispatch({type:'CLEAR_CART'})} >Clear Cart</Button></Link>
         </div>
         
         <div className="cart__total">

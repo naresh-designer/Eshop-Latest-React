@@ -5,8 +5,12 @@ import { Link } from 'react-router-dom'
 import AddCard from '../AddCard/AddCard'
 import Button from '../../assets/Styled/ButtonStyle'
 import { MdOutlineFavorite } from "react-icons/md";
+import { useContext } from 'react';
+import { AppContext } from '../../Context/Context';
+import Star from '../Star/Star';
 
 const Card = ({curElm}) => {
+    const {dispatch} = useContext(AppContext)
   return (
     <Main>
         <div className='productCard' >
@@ -23,12 +27,13 @@ const Card = ({curElm}) => {
                 }
                 </div>
                 <div className="favourit">
-                    <Link><MdOutlineFavorite /></Link>
+                    <Link onClick={()=>dispatch({type:'ADD_CART', curProduct:curElm})}><MdOutlineFavorite /></Link>
                     </div>
             </figure>
             <div className='productCard__content' >
                 <div className='productCard_category' >
                 <h5>{curElm.title}</h5>
+                <span><Star rating={curElm.rating}/></span>
                 </div>
             </div>
             <div className="button__group">

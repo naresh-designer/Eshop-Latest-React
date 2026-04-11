@@ -26,9 +26,6 @@ const Nav = () => {
           }
 
         </ul>
-
-
-        
       <CartIcon cart={cart}/>
           
 

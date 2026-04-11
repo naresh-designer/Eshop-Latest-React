@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import Star from '../Star/Star'
 
 const CardFlower = ({curElm}) => {
   return (
@@ -14,7 +15,9 @@ const CardFlower = ({curElm}) => {
                             <Link to={`/details/${curElm.id}`}>
                                 <figure>
                                     <img src={curElm.thumbnail} alt="" />
-                                    <figcaption className='productCard__cation' ><h3>{curElm.category}<p>{curElm.brand}</p></h3></figcaption>
+                                    <figcaption className='productCard__cation' ><h3>{curElm.category}<p>{curElm.brand}</p></h3>
+                                    <span><Star rating={curElm.rating}/></span>
+                                    </figcaption>
                                 </figure>
                             </Link>
                         </section>

@@ -1,17 +1,18 @@
 
 
-import { useContext} from 'react'
+import { useContext, useEffect} from 'react'
 import CartData from '../Components/CartData/CartData'
 import styled from 'styled-components'
 import { AppContext } from '../Context/Context'
 import { Link } from 'react-router-dom'
 import CartTotal from '../Components/CartTotal/CartTotal'
 
-
 const Cart = () => {
     const{cart}=useContext(AppContext)
 
-    
+    useEffect(()=>{
+        localStorage.setItem('cart',JSON.stringify(cart))
+    },[])
 
   return (
     

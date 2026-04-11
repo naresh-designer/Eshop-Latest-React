@@ -1,48 +1,32 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
+import { FaRegStarHalfStroke,FaStar,FaRegStar } from "react-icons/fa6";
 
-const Star = () => {
-    const[rating,setRating]=useState()
+const Star = ({rating}) => {
 
-    const handleClick = (index)=>{
-        setRating(index + 1)
-    }
+    const starRating = Array.from({length:5},(_,index)=>{
+        let number = index + 0.5
 
+        return(
+            <span>
+                {
+                    rating >= number + 1 ? (<FaStar className='active'/>) : 
+                    rating >= number ? (<FaRegStarHalfStroke className='active'/>) : 
+                    (<FaRegStar className='active'/>)
+                }
+            </span>
+        )
+    })
   return (
     <Main>
-        <div className="star">
-            {
-                new Array(5).fill(0).map((_,i)=>{
-                    return(
-                        <span key={i} className={rating > i ? 'active':''} onClick={()=>handleClick(i)}>&#9733;</span>
-                    )
-                })
-            }
-            <span className={rating > 0 ? 'show': 'hide'}>({rating}/5)</span>
-            
-        </div>
+        <div>{starRating}</div>
     </Main>
   )
 }
 const Main = styled.section`
-    .star{
-        display:flex;
-
-        span{
-            cursor:pointer;
-        }
-    }
         .active{
-            color:${({theme})=>theme.common.greenBg};
+            color:orange;
         }
-            .hide{
-                display:none;
-            }
-
-            .show{
-                display:block;
-                color:${({theme})=>theme.common.orangeColor};
-            }
 `
 
 export default Star

@@ -32,13 +32,8 @@ const DetailsContact = ({products}) => {
                                   </div>     
                                   <div className="product_content">
                                       <h4>{curElm.title} <span className='category' >({curElm.category})</span> </h4>
-                                      <p><Star/></p>
-                                  {/* <p>
-                                    Tag: ({curElm.tags.join(', ')})   
-                                    </p>  */}
-                                        {/* <p className='dimensions'>
-                                        (Width: {curElm.dimensions.width}), (Height: {curElm.dimensions.height}), (Depth: {curElm.dimensions.depth}) <br />
-                                        </p> */}
+                                      <p><Star rating={curElm.rating}/></p>
+                                  
                                       <p>Mrp: &#8377;{curElm.price} </p>
                                       <div className="product_warranty">
                                           <div className="product_warranty__data">

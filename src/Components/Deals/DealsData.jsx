@@ -6,6 +6,7 @@ import 'swiper/css';
 import 'swiper/css/free-mode';
 import 'swiper/css/pagination';
 import { Link } from 'react-router-dom';
+import Star from '../Star/Star';
 
 const DealsData = ({products}) => {
   return (
@@ -49,6 +50,7 @@ const DealsData = ({products}) => {
                                 <figure className='productCard__img'>
                                     <img src={curElm.thumbnail} alt={curElm.title} />
                                     <figcaption className='productCard__cation' ><h3>{curElm.category}<p>{curElm.brand}</p></h3></figcaption>
+                                    <span><Star rating={curElm.rating}/></span>
                                 </figure>
                             </div>
                             </Link>

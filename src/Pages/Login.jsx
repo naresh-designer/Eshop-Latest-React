@@ -9,8 +9,10 @@ import LoginCard from '../Components/LoginCard/LoginCard';
 const Login = () => {
     const[loginIcon,setLoginIcon] = useState(false);
     const[loginCard,setLoginCard] = useState(false);
+
   return (
     <Main>
+        
         <div className="login_icon" onClick={() => setLoginIcon(!loginIcon) }>
             <RiLoginCircleLine />
         </div>

@@ -29,6 +29,9 @@ const reducer = (state,action) =>{
                 }
                 return curElm
             })
+
+        case'CLEAR_CART':
+            return []
         default:
             return state
     }

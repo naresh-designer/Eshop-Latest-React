@@ -94,6 +94,7 @@ const Main = styled.section`
         margin-block-start:10px;
         position:sticky;
         top:100px;
+        z-index:9;
 
           .product__card__list__search{
               display:flex;

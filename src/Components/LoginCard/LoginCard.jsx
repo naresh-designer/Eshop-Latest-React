@@ -20,9 +20,13 @@ const LoginCard = ({loginCard,setLoginCard}) => {
     e.preventDefault()
   }
   
-
+  
+  
   return (
     <Main>
+
+
+
       {
         forgotPassword ? 
         <ForgotPassword/>
