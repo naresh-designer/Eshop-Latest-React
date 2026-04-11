@@ -7,7 +7,7 @@ const Breadcrumb = ({curElm}) => {
     <Main>
         <div className="breadcrumb">
         <div className="main__wrapper">
-                        <NavLink to='/product'>Products</NavLink> / {curElm.title}
+            <NavLink to='/product'>Products</NavLink> / {curElm.title}
         </div>
         </div>
     </Main>

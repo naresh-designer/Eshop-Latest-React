@@ -9,7 +9,7 @@ const HomeProduct = () => {
     const{menProducts}=useContext(AppContext)
     const headingData = {
         subHeading : 'POPULAR PRODUCTS',
-        mainHeading : 'beauty'
+        mainHeading : 'beauty',
     }
   return (
     <Main>

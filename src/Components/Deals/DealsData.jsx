@@ -1,6 +1,5 @@
 import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
-// import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { Autoplay} from 'swiper/modules';
 import 'swiper/css';
@@ -11,53 +10,53 @@ import { Link } from 'react-router-dom';
 const DealsData = ({products}) => {
   return (
     <Main>
-                    <Swiper
-                    slidesPerView={4}
-                    spaceBetween={30}
-                    freeMode={true}
-                    pagination={{
-                      clickable: true,
-                    }}
-                    autoplay={{
-                      delay: 1500,
-                      disableOnInteraction: false,
-                      waitForTransitions: true
-                    }}
-                    breakpoints={{
-                      0: {
-                        slidesPerView: 1,
-                        spaceBetween: 20,
-                      },
-                      768: {
-                        slidesPerView: 3,
-                        spaceBetween: 40,
-                      },
-                      1024: {
-                        slidesPerView: 4,
-                        spaceBetween: 30,
-                      },
-                    }}
-                    modules={[Autoplay]}
-                    className="mySwiper"
-                  >
+        <Swiper
+        slidesPerView={4}
+        spaceBetween={30}
+        freeMode={true}
+        pagination={{
+            clickable: true,
+        }}
+        autoplay={{
+            delay: 1500,
+            disableOnInteraction: false,
+            waitForTransitions: true
+        }}
+        breakpoints={{
+            0: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            },
+            768: {
+            slidesPerView: 3,
+            spaceBetween: 40,
+            },
+            1024: {
+            slidesPerView: 4,
+            spaceBetween: 30,
+            },
+        }}
+        modules={[Autoplay]}
+        className="mySwiper"
+        >
 
-                        {
-                            products.map((curElm)=>{
-                                return(
-                                    <SwiperSlide>
-                                        <Link to={`/details/${curElm.id}`}>
-                                        <div className='productCard' >
-                                            <figure className='productCard__img'>
-                                                <img src={curElm.thumbnail} alt={curElm.title} />
-                                                <figcaption className='productCard__cation' ><h3>{curElm.category}<p>{curElm.brand}</p></h3></figcaption>
-                                            </figure>
-                                        </div>
-                                        </Link>
-                                    </SwiperSlide>
-                                )
-                            })
-                        }
-                  </Swiper>
+            {
+                products.map((curElm)=>{
+                    return(
+                        <SwiperSlide>
+                            <Link to={`/details/${curElm.id}`}>
+                            <div className='productCard' >
+                                <figure className='productCard__img'>
+                                    <img src={curElm.thumbnail} alt={curElm.title} />
+                                    <figcaption className='productCard__cation' ><h3>{curElm.category}<p>{curElm.brand}</p></h3></figcaption>
+                                </figure>
+                            </div>
+                            </Link>
+                        </SwiperSlide>
+                    )
+                })
+            }
+        </Swiper>
 </Main>
   )
 }

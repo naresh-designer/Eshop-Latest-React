@@ -7,7 +7,7 @@ const AddCard = ({curElm}) => {
     const {dispatch} = useContext(AppContext)
   return (
     <>
-    <Button onClick={()=>dispatch({type:'ADD_CART', curProduct:curElm})}>Add Cart</Button>
+    <Button onClick={()=>dispatch({type:'ADD_CART', curProduct:curElm})}>Buy Now</Button>
     </>
   )
 }

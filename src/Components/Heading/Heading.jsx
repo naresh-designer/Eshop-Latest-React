@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 
-const Heading = ({headingData}) => {
+const Heading = ({className,headingData}) => {
   return (
     <Main>
-      <div className="heading">
+      <div className={`heading ${className}`}>
         <span>{headingData.subHeading}</span>
         <h1>{headingData.mainHeading}</h1>
         </div>
@@ -15,6 +15,7 @@ const Heading = ({headingData}) => {
 const Main = styled.section`
     text-align:center;
     text-transform:lowercase;
+    position:relative;
 
     .heading{
     display:inline-block;

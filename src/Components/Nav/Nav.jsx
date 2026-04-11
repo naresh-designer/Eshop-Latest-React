@@ -2,8 +2,8 @@ import React, { useContext, useState } from 'react'
 import { navData } from './navData'
 import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
-import { AppContext } from '../../Context/Context'
-import { FaCartShopping } from "react-icons/fa6"
+import { AppContext } from '../../Context/Context';
+import CartIcon from '../CartIcon/CartIcon';
 
 const Nav = () => {
     const [navShow, setNavShow ] = useState(false)
@@ -29,15 +29,8 @@ const Nav = () => {
 
 
         
-          <div className="cart">
+      <CartIcon cart={cart}/>
           
-          <NavLink to='/cart'><div className={cart.length > 0 ? 'cart__addProduct' : 'cart__none'}><FaCartShopping />
-            <div className='icon'>
-            {cart.length}
-              </div>
-              </div>
-              </NavLink>
-          </div>
 
         <div className={`toggle_button ${navShow ? 'changeToggle' : ''} `} onClick={() => setNavShow(!navShow)}>
           <div className="line"></div>
@@ -45,12 +38,16 @@ const Nav = () => {
           <div className="line"></div>
         </div>
       </div>
-    
     </Main>
   )
 }
 
 const Main = styled.nav`
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:20px;
 
 font-family:${({theme}) => theme.common.merriweatherFont };
 .nav{
@@ -59,7 +56,7 @@ font-family:${({theme}) => theme.common.merriweatherFont };
     align-items:center;
     margin-block:30px;
     position:relative;
-    z-index:1;
+    z-index:9;
   }
 ul{
   display:flex;
@@ -159,7 +156,6 @@ ul{
   }
 
   .changeToggle{
-    // border:1px solid ${({theme}) => theme.common.greenBg };
 
     .line{
       &:nth-child(1){
@@ -183,54 +179,6 @@ ul{
     margin-right:50px;
   }
 }
-
-.cart{
-    position:relative;
-    font-size:20px;
-    margin-left:20px;
-    transition:all .5s;
-    animation:fade .5s ease;
-    
-    @keyframes fade {
-        0%{
-            opacity:0;
-        }
-        100%{
-            opacity:1;
-        }
-    }
-
-    a{
-    color:${({theme}) => theme.common.grayColor };
-    }
-
-    .cart__addProduct{
-      display:grid;
-      align-items:center;
-      text-align:center;
-      position:relative;
-      margin-right:20px;
-      width:40px;
-
-      .icon{
-        position:absolute;
-        top:-20px;
-        right:0px;
-        border-radius:50px;
-        width:30px;
-        height:30px;
-        background-color:${({theme}) => theme.common.greenBg };
-        display:grid;
-        place-items:center;
-        font-size:16px;
-        color:${({theme}) => theme.common.whiteColor };
-      }
-    }
-  }
-
-  .cart__none{
-    display:none;
-  }
 
 @media screen and (max-width:${({theme}) => theme.mobile.smallM }){
   ul{

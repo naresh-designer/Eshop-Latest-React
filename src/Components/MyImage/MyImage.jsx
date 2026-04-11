@@ -1,39 +1,72 @@
 
 import { useState } from 'react';
 import styled from 'styled-components'
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+
+
+// import required modules
+import { Pagination, Keyboard } from 'swiper/modules'
 
 const MyImage = ({imgs}) => {
     const[image,setImage]=useState(imgs[0])
   return (
     <Main>
-    <div>
-        <figure>
+      <Swiper
+              pagination={{
+                type: 'fraction',
+              }}
+              keyboard={{
+                enabled: true,
+              }}
+              modules={[Pagination, Keyboard]}
+              className="mySwiper"
+            >
+            
+
             {
                 imgs.map((curElm)=>{
                     return(
+                        <SwiperSlide>
                         <img src={curElm} alt="" className={image==curElm?'box_image active':'show'} onClick={()=>setImage(curElm)} />
+                        </SwiperSlide>
                     )
                 })
             }
-        </figure>
-    </div>
-    <div className="product_Image">
-        <img src={imgs} alt="" className={image===imgs[0]?'box_image active':'show'} />
-    </div>
+      </Swiper>
+    
     </Main>
   )
 }
 const Main = styled.section`
     display:grid;
-    grid-template-columns:0.4fr 1fr;
+    grid-template-columns:1fr;
     gap:20px;
     place-items:center;
 
     .box_image{
         margin-top:20px;
         cursor:pointer;
-        border:1px solid #ccc;
     }
+
+
+.swiper {
+    width: 100%;
+  }
+  
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+  
+    /* Center slide text vertically */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
     `
 
 export default MyImage

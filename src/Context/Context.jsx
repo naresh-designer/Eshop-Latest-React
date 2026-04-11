@@ -9,6 +9,7 @@ const AppProvider = ({children})=>{
     const[products,setProducts]=useState([])
     const[menProducts,setMenProducts]=useState([])
     const[womanProduct,setWomanProduct]=useState([])
+    const[flowerProduct,setFlowerProduct]=useState([])
 
     const [cart, dispatch] =  useReducer(reducer,[])
 
@@ -31,6 +32,16 @@ const AppProvider = ({children})=>{
                 )
             })
 
+            const filterFlower = data.products.filter((curElm)=>{
+                return(
+                    curElm.category === "flower"
+                )
+            })
+
+            console.log(filterFlower);
+
+            setFlowerProduct(filterFlower)
+
             setProducts(data.products)
             setWomanProduct(filterWProduct)
 
@@ -45,7 +56,7 @@ const AppProvider = ({children})=>{
     },[])
 
     return(
-        <AppContext.Provider value={{cart, dispatch, menProducts,womanProduct,products}}>{children}</AppContext.Provider>
+        <AppContext.Provider value={{cart, dispatch, flowerProduct, menProducts,womanProduct,products}}>{children}</AppContext.Provider>
     )
 }
 

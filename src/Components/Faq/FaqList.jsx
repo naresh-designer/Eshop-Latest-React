@@ -1,9 +1,13 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import { IoIosArrowDown } from 'react-icons/io'
+import Heading from '../Heading/Heading'
 
 const FaqList = ({products}) => {
   const[showData,setShowData]=useState(false)
+  const headingData = {
+      mainHeading : 'FAQs'
+  }
 
   const faqToggle = (i) => {
     if(showData === i){
@@ -14,11 +18,13 @@ const FaqList = ({products}) => {
 
   return (
     <Main>
+
+      <Heading headingData={headingData}/>
       <ul>
        {
         products.slice(3,8).map((curElm,i)=>{
           return(
-            <li>
+            <li key={curElm.id}>
                 <div className={`faq ${showData === i ? 'select' : ''} `} onClick={() => faqToggle(i) } >
                     <div className="faq__header">
                         <h6>{curElm.category}</h6>
@@ -41,7 +47,7 @@ const Main =styled.section`
     ul{
 
         li{
-            width:50%;
+            width:80%;
             margin:auto;
             animation:faq .5s ease;
             animation-timeline: view();
@@ -57,8 +63,8 @@ const Main =styled.section`
             }
 
             .faq{
-                background-color:#e4e8e8;
-                padding:20px 30px;
+                border:1px solid hotpink;
+                padding:20px 30px 5px;
                 margin-top:20px;
                 cursor:pointer;
                 transition:all .5s ease-in-out;
@@ -77,7 +83,7 @@ const Main =styled.section`
                     padding-top:10px;
                     display:grid;
                     grid-template-rows:0fr;
-            transition: all .3s ease-in-out;
+                    transition: all .3s ease-in-out;
 
                     > div{
                       overflow:hidden;
@@ -90,6 +96,7 @@ const Main =styled.section`
             }
             .select{
                 background-color:black;
+                border:1px solid #000;
                 color:#fff;
                 transition:all .5s ease-in-out;
 

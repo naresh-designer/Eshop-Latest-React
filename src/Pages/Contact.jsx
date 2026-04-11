@@ -39,8 +39,8 @@ const Contact = () => {
             <p>POSTAL ADDRESS</p>
             <hr/>
             <p>P.O. BOX
-130 NORTHBRIDGE
-NSW 1560</p>
+                130 NORTHBRIDGE
+              NSW 1560</p>
           </div>
         </div>
       </div>

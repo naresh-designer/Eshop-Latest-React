@@ -27,6 +27,7 @@ body{
     font-size:18px;
     color:${({ theme }) => theme.common.grayColor};
     letter-spacing:.5px
+    overflow-x:hidden;
 }
 
 ::placeholder{

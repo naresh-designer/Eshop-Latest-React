@@ -1,33 +1,24 @@
 
 
-import { useContext } from 'react'
+import { useContext} from 'react'
 import CartData from '../Components/CartData/CartData'
 import styled from 'styled-components'
 import { AppContext } from '../Context/Context'
 import { Link } from 'react-router-dom'
-import Button from 'styled-components'
+import CartTotal from '../Components/CartTotal/CartTotal'
 
 
 const Cart = () => {
     const{cart}=useContext(AppContext)
 
+    
 
-    if(cart.length === 0){
-      return(
-        <div className='cartList' style={{width:'100%',height:'calc(100vh - 30vh)',display:'flex',justifyContent:'center',alignItems:'center',fontSize:'5rem',textTransform:'lowercase',textAlign:'center'}}>
-       <div>
-        Cart List is Empty
-        <p><Link to='/product' style={{fontSize:'2rem',cursor:'pointer',color:'hotpink',textDecoration:'underline',textTransform:'lowercase'}} >Continue Shopping</Link></p>
-        </div>
-        
-        </div>
-      )
-  }
   return (
     
     <Main>
 
-<div className="main__wrapper">
+        {
+            cart.length > 0 ? <div className="main__wrapper">
             <div className='cart__list grid grid__five' >
                 <p>Item</p>
                 <p className='hide' >Price</p>
@@ -46,22 +37,47 @@ const Cart = () => {
             </div>
             <hr/>
 
-                <div className='cart_two__button' > 
-                    <Link to='/product' >
-                        <Button>Continue Shopping</Button>
-                    </Link>
-                </div>
+            <CartTotal/>
 
             
-        </div>
+            
+        </div> 
         
+        : 
+         <div className='cartList' style={{width:'100%',height:'calc(100vh - 50vh)',display:'flex',justifyContent:'center',alignItems:'center',fontSize:'5rem',textTransform:'lowercase',textAlign:'center'}}>
+            <div>
+                Cart List is Empty
+                <p><Link to='/product' style={{fontSize:'2rem',cursor:'pointer',color:'hotpink',textDecoration:'underline',textTransform:'lowercase'}} >Continue Shopping</Link></p>
+            </div>
+         </div>
+        }
     </Main>
   )
 }
 const Main = styled.section`
 padding-block:100px;
 
+.cart__total{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-block:20px;
+    margin-inline-start:auto;
+    width:300px;
+    padding:30px 40px;
+    background-color:#f8f6f3;
 
+    .cart__total__left{
+        p{
+            margin-bottom:10px;
+            text-align:right;
+        }
+    }
+    .cart__total__right{
+        p{
+            margin-bottom:10px;
+        }
+    }}
 
 
 .cartList{
@@ -81,6 +97,7 @@ padding-block:100px;
 }
     .car_image__name{
         display:flex;
+        align-items:center;
         gap:10px;
         padding-left:10px;
     }
@@ -91,11 +108,13 @@ padding-block:100px;
 
     .cart_items__list{
         padding-block:30px;
-        background-color:#f8f6f3;
+        // background-color:#f8f6f3;
+        place-items:center;
     }
 
     .cart_items__list p{
         text-align:center;
+        margin-bottom:0;
     }
 
     .color_div{

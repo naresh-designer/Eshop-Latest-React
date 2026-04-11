@@ -48,7 +48,12 @@ const Main = styled.footer`
         border-bottom:1px solid ${({theme}) => theme.common.whiteColor };
         padding:30px 0;
         margin-bottom:20px;
+
+        .carticon{
+            display:none;
+        }
     }
+
     .copyright{
         display:flex;
         justify-content:space-between;

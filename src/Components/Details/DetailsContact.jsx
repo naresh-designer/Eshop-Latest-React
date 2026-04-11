@@ -7,11 +7,14 @@ import { FaShieldVirus } from 'react-icons/fa'
 import Star from '../Star/Star'
 import Breadcrumb from '../Breadcrumb/Breadcrumb'
 import MyImage from '../MyImage/MyImage'
-import AddCard from '../AddCard/AddCard'
 import RelatedProduct from '../RelatedProduct/RelatedProduct'
+import { useContext } from 'react'
+import { AppContext } from '../../Context/Context'
+import Button from '../../assets/Styled/ButtonStyle'
 
 
 const DetailsContact = ({products}) => {
+    const {dispatch} = useContext(AppContext)
     const {id} = useParams()
   return (
     <Main>
@@ -30,12 +33,12 @@ const DetailsContact = ({products}) => {
                                   <div className="product_content">
                                       <h4>{curElm.title} <span className='category' >({curElm.category})</span> </h4>
                                       <p><Star/></p>
-                                  <p>
+                                  {/* <p>
                                     Tag: ({curElm.tags.join(', ')})   
-                                    </p> 
-                                        <p className='dimensions'>
+                                    </p>  */}
+                                        {/* <p className='dimensions'>
                                         (Width: {curElm.dimensions.width}), (Height: {curElm.dimensions.height}), (Depth: {curElm.dimensions.depth}) <br />
-                                        </p>
+                                        </p> */}
                                       <p>Mrp: &#8377;{curElm.price} </p>
                                       <div className="product_warranty">
                                           <div className="product_warranty__data">
@@ -58,7 +61,7 @@ const DetailsContact = ({products}) => {
                                               Brand : <span>{curElm.description}</span>
                                           </p>
                                       </div>
-                                      <AddCard curElm={curElm}/>
+                                        <Button onClick={()=>dispatch({type:'ADD_CART', curProduct:curElm})}>Add Cart</Button>
                                   </div>
                               </div>
                               <RelatedProduct curElm={curElm}/>

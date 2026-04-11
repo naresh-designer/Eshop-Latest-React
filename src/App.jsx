@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom'
 import Container from './Components/Container/Container'
 import { ThemeProvider } from 'styled-components'
 import GlobalStyle from './assets/Styled/Globalstyle'
+import Login from './Pages/Login'
 const Header = lazy(() => import('./Components/Header/Header'))
 const Footer = lazy(() => import('./Components/Footer/Footer'))
 // import Header from './Components/Header/Header'
@@ -18,7 +19,7 @@ const App = () => {
       headingBg: "#000",
       fontColor: "#ccc",
       grayColor: "hotpink",
-      blackColor: "#000000",
+      blackColor: "#000",
       whiteColor: "#fff",
       merriweatherFont: '"Josefin Sans", system-ui',
       orangeColor: "#ba9173",
@@ -34,6 +35,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <GlobalStyle/>
         <BrowserRouter basename="/work/shop/">
+        <Login/>
           <Header/>
           <Container/>
           <Footer/>

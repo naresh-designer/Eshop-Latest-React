@@ -45,11 +45,6 @@ const Header = () => {
 }
 
 const Main = styled.header`
-// position:fixed;
-// z-index:999;
-// top:0;
-// width:100%;
-// background-color:#f8f6f3;
 .sticky{
   position:fixed;
   top:0;
@@ -60,16 +55,21 @@ const Main = styled.header`
   animation:headerAnim .5s ease-in-out ;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
+  border-bottom:1px solid #ccc;
+  box-shadow:0 0 10px rgba(0,0,0,.5);
+  
+  }
+
+  .sticky .logo{
+    color:${({theme}) => theme.common.blackColor };
   }
 
   @keyframes headerAnim {
     0%{
-      opacity:0;
       -webkit-transform:translate3d(0,-100%,0);
       transform:translate3d(0,-100%,0);
     }
     100%{
-    opacity:1;
       -webkit-transform:none;
       transform:none;
     }
@@ -79,9 +79,10 @@ const Main = styled.header`
       justify-content:space-between;
       align-items:center;
       padding-block:10px;
+      padding-inline:20px;
       transition:all .5s ease;
       width:100%;
-background-color:#f8f6f3;
+      background-color:#f8f6f3;
     }
 
     .module{

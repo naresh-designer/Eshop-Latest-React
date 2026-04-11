@@ -57,6 +57,7 @@ const PolicyList = () => {
 }
 
 const Main = styled.section`
+        z-index:999;
     .policyList{
 
         ul{
