@@ -1,6 +1,6 @@
 
+import { useContext} from 'react'
 import styled from 'styled-components'
-import { useParams } from 'react-router-dom'
 import { FaTruckFast } from 'react-icons/fa6'
 import { LuReplaceAll } from 'react-icons/lu'
 import { FaShieldVirus } from 'react-icons/fa'
@@ -8,64 +8,60 @@ import Star from '../Star/Star'
 import Breadcrumb from '../Breadcrumb/Breadcrumb'
 import MyImage from '../MyImage/MyImage'
 import RelatedProduct from '../RelatedProduct/RelatedProduct'
-import { useContext } from 'react'
 import { AppContext } from '../../Context/Context'
 import Button from '../../assets/Styled/ButtonStyle'
+import ClientReview from '../ClientReview/ClientReview'
 
 
-const DetailsContact = ({products}) => {
+const DetailsContact = ({curElm}) => {
     const {dispatch} = useContext(AppContext)
-    const {id} = useParams()
+
   return (
-    <Main>
-        {
-            products.map((curElm)=>{
-                if(curElm.id==id){
-                    return(
+    <Main>           
+        <div className="main__wrapper">
+
+            <Breadcrumb curElm={curElm}/>
+                <div className="product_detail__Page grid grid__two">
+                    <div className="product_image">
+                    <MyImage key={curElm.id} imgs={curElm.images}/>
+                    </div>     
+                    <div className="product_content">
+                        <h4>{curElm.title} <span className='category' >({curElm.category})</span> </h4>
+                        <p><Star rating={curElm.rating}/></p>
+                    
+                        <p>Mrp: &#8377;{curElm.price} </p>
+                        <div className="product_warranty">
+                            <div className="product_warranty__data">
+                            <FaTruckFast className='warranty_icon'  />
+                            {curElm.shippingInformation}
+                            </div>
+                            <div className="product_warranty__data">
+                            <LuReplaceAll className='warranty_icon' />
+                            {curElm.returnPolicy}
+                            </div>
+                            <div className="product_warranty__data">
+                            <FaShieldVirus className='warranty_icon'  />
+                            {curElm.warrantyInformation}
+                            </div>
+                        </div>
+                        <div className="product_data__info">
+                            <p>Available : {curElm.stock} <span>({curElm.stock > 0 ? 'In Stock' : 'Not Available'})</span>
+                            </p>
+                            <p>
+                                Brand : <span>{curElm.description}</span>
+                            </p>
+                        </div>
                         
-                        <div className="main__wrapper">
 
-                            <Breadcrumb curElm={curElm}/>
-                              <div className="product_detail__Page grid grid__two">
-                                  <div className="product_image">
-                                    <MyImage key={curElm.id} imgs={curElm.images}/>
-                                  </div>     
-                                  <div className="product_content">
-                                      <h4>{curElm.title} <span className='category' >({curElm.category})</span> </h4>
-                                      <p><Star rating={curElm.rating}/></p>
-                                  
-                                      <p>Mrp: &#8377;{curElm.price} </p>
-                                      <div className="product_warranty">
-                                          <div className="product_warranty__data">
-                                          <FaTruckFast className='warranty_icon'  />
-                                          {curElm.shippingInformation}
-                                          </div>
-                                          <div className="product_warranty__data">
-                                          <LuReplaceAll className='warranty_icon' />
-                                          {curElm.returnPolicy}
-                                          </div>
-                                          <div className="product_warranty__data">
-                                          <FaShieldVirus className='warranty_icon'  />
-                                          {curElm.warrantyInformation}
-                                          </div>
-                                      </div>
-                                      <div className="product_data__info">
-                                          <p>Available : {curElm.stock} <span>({curElm.stock > 0 ? 'In Stock' : 'Not Available'})</span>
-                                          </p>
-                                          <p>
-                                              Brand : <span>{curElm.description}</span>
-                                          </p>
-                                      </div>
-                                        <Button onClick={()=>dispatch({type:'ADD_CART', curProduct:curElm})}>Add Cart</Button>
-                                  </div>
-                              </div>
-                              <RelatedProduct curElm={curElm}/>
-                          </div>
-                    )
-                }
-            })
-        }
 
+                        <Button onClick={()=>dispatch({type:'ADD_CART', curProduct:curElm})}>Add Cart</Button>
+
+                        <ClientReview/>
+                    </div>
+                </div>
+                <RelatedProduct curElm={curElm}/>
+
+        </div>
     </Main>
   )
 }
@@ -90,7 +86,7 @@ const Main = styled.section`
 
             .warranty_icon{
                 margin-bottom:10px;
-                background-color:${({theme}) => theme.common.greenBg };
+                background-color:${({theme}) => theme.common.fontColor };
                 width:30px;
                 height:30px;
                 padding:5px;

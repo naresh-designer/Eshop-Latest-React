@@ -1,7 +1,8 @@
-import React, {lazy, Suspense, useContext, useState } from 'react'
+import React, {useContext, useState } from 'react'
 import { AppContext } from '../../Context/Context'
 import styled from 'styled-components'
-const Card = lazy(() => import('../Card/Card'))
+import ProductFilterLeft from './ProductFilterLeft'
+import ProductFilterRight from './ProductFilterRight'
 
 const ProductFilter = () => {
   const[inputSearch,setInputSearch]=useState('')
@@ -12,19 +13,26 @@ const ProductFilter = () => {
   const filterProductSearch = products.filter((curSearch)=>{
     return curSearch.category.toLowerCase().includes(inputSearch.toLowerCase())
   })
+
+ 
+
   
   //   Filter Category
-  const filterCategory = filterProductSearch.map((curFilter)=>{
+  const filterCategory = products.map((curFilter)=>{
     return curFilter.category
   })
 
-  const uniqueCategoryListing = ['all',...new Set(filterCategory,categoryValue)]
+  const uniqueCategoryListing = ['all',...new Set(filterCategory)]
 
   const handleClick = (curElm) => {
     if(curElm === 'all'){
-        setCategoryValue(filterProductSearch)
+        setCategoryValue(products)
     }else{
-        setCategoryValue(filterProductSearch.filter((el)=>el.category===curElm))
+        const categoryFit = products.filter((el)=>{
+          return el.category === curElm
+        })
+
+        setCategoryValue(categoryFit)
     }
   }
   
@@ -34,51 +42,10 @@ const ProductFilter = () => {
     <Main>
         <div className='product__card'>
             <div className='product__card__list'>
-
-                {/* Search Listing */}
-                <div className="product__card__list__search">
-                    <input type="text" placeholder='Enter keyword....' value={inputSearch} onChange={(e)=>setInputSearch(e.target.value)} />
-                </div>
-                {/* End Search Listing */}
-
-                {/* Filter Category Listing */}
-                <div className='product__card__filter'>
-                    <ul>
-                        {
-                            uniqueCategoryListing.map((curElm,index)=>{
-                                return(
-                                    <li key={index} onClick={()=>handleClick(curElm)}>{curElm}</li>
-                                )
-                            })
-                        }
-                    </ul>
-                </div>
-                {/* End Filter Category Listing */}
-
+              <ProductFilterLeft handleClick={handleClick} setInputSearch={setInputSearch} inputSearch={inputSearch} uniqueCategoryListing={uniqueCategoryListing} />
             </div>
             <div>
-                    {
-                    filterProductSearch.length === 0 ? <h4 style={{textAlign:'center',height:'50vh',display:'grid',placeItems:'center'}}>No Product Found</h4> :
-                    <div className='grid grid__three' >
-                        {
-                            filterProductSearch.map((curElm)=>{
-                                if(categoryValue.length === 0){
-                                    return(
-                                    <Suspense key={curElm.id} fallback={<h6>Loading...</h6>}>
-                                    <Card curElm={curElm} />
-                                    </Suspense>
-                                )
-                                }else if(categoryValue.includes(curElm)){
-                                    return(
-                                        <Suspense key={curElm.id} fallback={<h6>Loading...</h6>}>
-                                        <Card curElm={curElm} />
-                                        </Suspense>
-                                    )
-                                }
-                            })
-                        }
-                        </div>
-                    }
+              <ProductFilterRight filterProductSearch={filterProductSearch} categoryValue={categoryValue} />
             </div>
         </div>
     </Main>
@@ -129,6 +96,10 @@ const Main = styled.section`
             }
           }
       }
+    }
+
+    .select__category{
+      margin-block-start:50px;
     }
 
     @media(width <= 1100px){

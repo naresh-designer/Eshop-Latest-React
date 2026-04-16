@@ -16,15 +16,11 @@ const CartTotal = () => {
         <div className="cart__total">
                 <div className="cart__total__left">
                     <p>Subtotal</p>
-                    <p>Shipping</p>
-                    <p>Estimate Tax</p>
                     <p>Total</p>
                 </div>
                 <div className="cart__total__right">
-                    <p>$ 0.00</p>
-                    <p>$ 0.00</p>
-                    <p>$ 0.00</p>
-                    <p>$ 0.00</p>
+                    <p>$ {}</p>
+                    <p>$ {}</p>
                 </div>
             </div>
     </Main>

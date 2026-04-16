@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import { FaRegStarHalfStroke,FaStar,FaRegStar } from "react-icons/fa6";
 
 const Star = ({rating}) => {
-
     const starRating = Array.from({length:5},(_,index)=>{
         let number = index + 0.5
 
@@ -17,6 +16,8 @@ const Star = ({rating}) => {
             </span>
         )
     })
+
+
   return (
     <Main>
         <div>{starRating}</div>

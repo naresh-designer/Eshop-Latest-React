@@ -38,7 +38,8 @@ const Header = () => {
             <Nav/>
           </div>
           {
-            open && <div className='module'>sucsessfully added to cart ({cart.length}) items</div>
+            open && <div className='module'>sucsessfully added to cart ({cart.length}) items</div> 
+            
           }
     </Main>
   )

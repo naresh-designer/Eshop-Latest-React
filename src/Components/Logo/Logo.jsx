@@ -1,23 +1,29 @@
 import React from 'react'
 import { BiSolidShoppingBags } from "react-icons/bi"
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 const Logo = ({className}) => {
   return (
     <Main>
+        <Link to='/'>
         <BiSolidShoppingBags className='shopping__bag' />
         <div className={`logo ${className}`}>E-<span>shop</span></div>
+        </Link>
     </Main>
   )
 }
 
 const Main = styled.section`
-display:flex;
+    a{
+    
+    display:flex;
     align-items:center;
     font-size:30px;
     color:${({theme}) => theme.common.grayColor };
     font-family:${({theme}) => theme.common.merriweatherFont };
     margin-block:15px;
+    }
 
     .shopping__bag{
         font-size:40px;

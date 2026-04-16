@@ -52,6 +52,16 @@ const Main = styled.section`
 
     background-color:#f1f1f1;
     margin-top:30px;
+    animation:fadeBox 1s ease;
+
+    @keyframes fadeBox {
+        0%{
+            opacity:0;
+        }
+        100%{
+            opacity:1;
+        }
+    }
 
         .productCard{
             overflow:hidden;
@@ -159,9 +169,11 @@ const Main = styled.section`
         }
 
         .button__group{
-            display:flex;
-            justify-content:center;
-            gap:20px;
+            text-align:center;
+            button{
+                margin-block:20px;
+                margin-right:10px;
+            }
         }
 
         .productCard__content{
